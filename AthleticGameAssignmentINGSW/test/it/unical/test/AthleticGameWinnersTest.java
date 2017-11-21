@@ -13,8 +13,8 @@ public class AthleticGameWinnersTest {
 	private static AthleticGame athleticGame ;
 	
 	@BeforeClass
-	public static void inizializzazione() {
-		athleticGame=new AthleticGame(" ");
+	public static void setUp() {
+		athleticGame=new AthleticGame("football");
 	}
 	
 	@After
@@ -26,6 +26,7 @@ public class AthleticGameWinnersTest {
 	public void startTest() {
 		athleticGame.start();
 	}
+	
 	@Test
 	public void getWinnerTest_1() {
 		athleticGame.addArrival("Roumia", Instant.now().plusMillis(1000));
@@ -38,8 +39,8 @@ public class AthleticGameWinnersTest {
 	}
 	@Test
 	public void getWinnerTest_2() {
-		athleticGame.addArrival(" ", Instant.now().plusMillis(1000));
-		
-		Assert.assertEquals(" ", athleticGame.getWinner());
+		athleticGame.addArrival("Roumia", Instant.now().plusMillis(1000));
+		athleticGame.addArrival("Ahmed", Instant.now().plusMillis(500));
+		Assert.assertEquals("Ahmed", athleticGame.getWinner());
 	}
 }
